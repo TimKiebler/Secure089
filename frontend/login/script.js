@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Login erfolgreich!");
                 localStorage.setItem("token", data.token); // Save JWT token
                 localStorage.setItem("email", data.email); // Sabe username
                 window.location.href = "../home/home.html"; // Redirect on success
