@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure 089 Mitarbeiter Portal login</title>
+    <link rel="stylesheet" href="styles-login.css">
+
+</head>
+<body>
+    <div id="login-frame">
+        <img id="logo" src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">
+
+        <h1>Secure089 Mitarbeiter Portal</h1>
+
+        <hr>
+
+        <form id="login-form">
+
+            <label for="username">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="8" r="4" stroke="black" stroke-width="2"/>
+                    <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="black" stroke-width="2"/>
+                </svg>
+                <input type="text" id="username" placeholder="Benutzername">
+            </label>
+            <label for="password">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="10" width="12" height="10" stroke="black" stroke-width="2"/>
+                    <path d="M9 10V7a3 3 0 1 1 6 0v3" stroke="black" stroke-width="2"/>
+                </svg>
+                <input type="password" id="password" placeholder="Passwort">
+            </label>
+
+            <label id="password-reset"><a href="">Passwot vergessen?</a></label>
+            
+            <button id="login-button" href='../home/home.html'>Anmelden</button>
+            <!-- <input type="submit" id="login-button" value="Anmelden"> -->
+            
+
+            <hr>
+
+            <p>Noch nicht bei uns angemeldet?</p>
+            <label id="register"><a href="../registration/registration.html">Registrieren</a></label>
+
+        </form>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
