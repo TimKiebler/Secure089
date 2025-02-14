@@ -4,6 +4,7 @@ import UsersCtrl from "./users.controller.js"
 const router = express.Router()
 
 router.route("/register").post(UsersCtrl.apiRegisterUser)
+router.route("/register/complete").post(UsersCtrl.apiCompleteRegistration);
 router.route("/login").post(UsersCtrl.apiLoginUser)
 router.route("/").get(UsersCtrl.apiGetUsers)
 

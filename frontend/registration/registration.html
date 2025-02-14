@@ -27,8 +27,16 @@
 
             <div class="form-body">
                 <div class="form-group">
-                    <label class="input-label" for="Username">Username</label>
-                    <input type="text" id="Username" required>
+                    <label class="input-label" for="Vorname">Vorname</label>
+                    <input type="text" id="Vorname" required>
+                </div>
+                <div class="form-group">
+                    <label class="input-label" for="Nachname">Nachname</label>
+                    <input type="text" id="Nachname" required>
+                </div>
+                <div class="form-group">
+                    <label class="input-label" for="email">Email</label>
+                    <input type="email" id="email" required>
                 </div>
                 <div class="form-group">
                     <label class="input-label" for="Password">Password</label>
@@ -36,183 +44,6 @@
                 </div>
             </div>
             
-        </div>
-        <div id="pers-daten" class="form"> 
-            <h2>Persönliche Daten</h2>
-            <hr>
-
-            <div class="form-body">
-                <div class="form-group">
-                    <label class="input-label" for="Vorname">Vorname</label>
-                    <input type="text" id="Vorname" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Nachname">Nachname</label>
-                    <input type="text" id="Nachname" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Geburtdatum" >Geburtdatum</label>
-                    <input type="date" id="Geburtdatum" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Telefonnummer" >Telefonnummer</label>
-                    <input type="tel" id="Telefonnummer" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Staatsangehoerigkeit" >Staatsangehoerigkeit</label>
-                    <input type="text" id="Staatsangehoerigkeit" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="email" >Email</label>
-                    <input type="email" id="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Familienstand" >Familienstand</label>
-                    <select id="Familienstand" name="Familienstand" required>
-                        <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="ledig">Ledig</option>
-                        <option value="verheiratet">Verheiratet</option>
-                        <option value="geschieden">Geschieden</option>
-                        <option value="verwitwet">Verwitwet</option>
-                        <option value="andere">Andere</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Geschlecht" >Geschlecht</label>
-                    <select id="Geschlecht" name="Geschlecht" required>
-                        <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="maennlich">Männlich</option>
-                        <option value="weiblich">Weiblich</option>
-                    </select>
-                </div>
-
-            </div>
-        </div>
-
-        <div id="adresse" class="form">
-            <h2>Adresse</h2>
-            <hr>
-
-            <div class="form-body">
-
-                <div class="form-group">
-                    <label class="input-label" for="Straße">Straße</label>
-                    <input type="text" id="Straße" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Hausnummer">Hausnummer</label>
-                    <input type="text" id="Hausnummer" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Postleitzahl">Postleitzahl</label>
-                    <input type="text" id="Postleitzahl" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Ort">Ort</label>
-                    <input type="text" id="Ort" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Land">Land</label>
-                    <input type="text" id="Land" required>     
-                </div>
-                
-            </div>
-
-        </div>
-        <div id="steuer-daten" class="form">
-            <h2>Steuerlich relevante Daten</h2>
-            <hr>
-
-            <div class="form-body">
-
-                <div class="form-group">
-                    <label class="input-label" for="Geburtsname">Geburtsname (Nachname)</label>
-                    <input type="text" id="Geburtsname" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Geburtsort">Geburtsort</label>
-                    <input type="text" id="Geburtsort" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Geburtsland">Geburtsland</label>
-                    <input type="text" id="Geburtsland" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Steuer-ID">Steuer-ID</label>
-                    <input type="text" id="Steuer-ID" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Sozialversicherungsnummer">Sozialversicherungsnummer</label>
-                    <input type="text" id="Sozialversicherungsnummer" required>     
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Hauptjob" >Haben sie einen Hauptjob?</label>
-                    <select id="Hauptjob" name="Hauptjob" required>
-                        <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="maennlich">Ja</option>
-                        <option value="weiblich">Nein</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Student" >Sind sie Student?</label>
-                    <select id="Student" name="Student" required>
-                        <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="maennlich">Ja</option>
-                        <option value="weiblich">Nein</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Geschlecht" >Sind sie arbeitslos gemeldet?</label>
-                    <select id="Geschlecht" name="Geschlecht" required>
-                        <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="maennlich">Ja</option>
-                        <option value="weiblich">Nein</option>
-                    </select>
-                </div>
-
-            </div>
-
-        </div>
-        <div id="bankverbindung" class="form">
-            <h2>Bankverbindung</h2>
-            <hr>
-
-            <div class="form-body">
-
-                <div class="form-group">
-                    <label class="input-label" for="Kontoinhaber">Kontoinhaber</label>
-                    <input type="text" id="Kontoinhaber" required>     
-                </div>
-                
-                <div class="form-group">
-                    <label class="input-label" for="BIC">BIC</label>
-                    <input type="text" id="BIC" required>     
-                </div>
-                
-                <div class="form-group">
-                    <label class="input-label" for="IBAN">IBAN</label>
-                    <input type="text" id="IBAN" required>     
-                </div>
-
-            </div>
         </div>
         <div id="bestaetigen" class="form">
             <div class="form-group-checkbox">
@@ -225,6 +56,6 @@
         </div>
     </div>
 
-
+    <script src="script.js"></script>
 </body>
 </html>

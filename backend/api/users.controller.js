@@ -1,39 +1,71 @@
 import UsersDAO from "../dao/usersDAO.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import dotenv from "dotenv"
 
+dotenv.config();
 const SECRET_KEY = process.env['JWT_SECRET'];
 
 export default class UsersController {
+  // /api/users.controller.js
+
   static async apiRegisterUser(req, res) {
     try {
-      const { username, password } = req.body
+      const {firstName, lastName, email, password } = req.body;
 
-      if (!username || !password) {
-        return res.status(400).json({ error: "Missing username or password" })
+      if (!firstName || !lastName || !email || !password) {
+        return res.status(400).json({ error: "Missing required fields" });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10)
-      const userResponse = await UsersDAO.addUser(username, hashedPassword)
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const userResponse = await UsersDAO.addUser(firstName, lastName, email, hashedPassword);
 
       if (userResponse.error) {
-        return res.status(400).json({ error: userResponse.error })
+        return res.status(400).json({ error: userResponse.error });
       }
 
-      res.json({ status: "success" })
+      res.json({ status: "success", message: "Step 1 completed. Proceed to step 2." });
     } catch (e) {
-      res.status(500).json({ error: e.message })
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async apiCompleteRegistration(req, res) {
+    try {
+      const { email, phoneNumber, address, dateOfBirth, profilePicture, bio } = req.body;
+
+      if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+      }
+
+      const additionalData = {
+        phoneNumber,
+        address,
+        dateOfBirth,
+        profilePicture,
+        bio,
+      };
+
+      const updateResponse = await UsersDAO.updateUser(email, additionalData);
+
+      if (updateResponse.error) {
+        return res.status(400).json({ error: updateResponse.error });
+      }
+
+      res.json({ status: "success", message: "Registration completed successfully." });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
     }
   }
 
   static async apiLoginUser(req, res) {
     try {
-      const { username, password } = req.body
-      if (!username || !password) {
-        return res.status(400).json({ error: "Missing username or password" })
+      const { email, password } = req.body
+      if (!email || !password) {
+        return res.status(400).json({ error: "Missing email or password" })
       }
 
-      const user = await UsersDAO.getUser(username)
+      const user = await UsersDAO.getUser(email)
       if (!user) {
         return res.status(401).json({ error: "User not found" })
       }
@@ -43,8 +75,8 @@ export default class UsersController {
         return res.status(401).json({ error: "Invalid credentials" })
       }
 
-      const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: "1h" })
-      res.json({ token })
+      const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: "1h" })
+      res.json({ token, email })
     } catch (e) {
       res.status(500).json({ error: e.message })
     }
