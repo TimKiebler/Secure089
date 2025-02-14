@@ -82,6 +82,23 @@ export default class UsersController {
     }
   }
 
+  static async apiGetUserData(req, res) {
+    try {
+      const token = req.headers.authorization.split(" ")[1]; // Extract token from header
+      const decoded = jwt.verify(token, SECRET_KEY); // Verify the token
+      const email = decoded.email; // Get the email from the token payload
+  
+      const user = await UsersDAO.getUser(email); // Fetch user data
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      res.json(user); // Return the user data
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
   static async apiGetUsers(req, res) {
     try {
       const users = await UsersDAO.getAllUsers()
