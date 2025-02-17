@@ -22,6 +22,32 @@ export default class JobsController {
     }
   }
 
+  static async apiDeleteJob(req, res) {
+    try {
+      const { jobName } = req.body;
+  
+      if (!jobName) {
+        return res.status(400).json({ error: "Missing required field: jobName" });
+      }
+  
+      const jobResponse = await JobsDAO.deleteJob(jobName);
+  
+      if (jobResponse.error) {
+        return res.status(400).json({ error: jobResponse.error });
+      }
+  
+      if (jobResponse.deletedCount === 0) {
+        return res.status(404).json({ error: "Job not found or already deleted." });
+      }
+  
+      res.json({ status: "success", message: "Job deleted successfully." });
+    } catch (e) {
+      console.error(`Error in apiDeleteJob: ${e.message}`);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  }
+  
+
   static async apiGetJobs(req, res) {
     try {
       const jobs = await JobsDAO.getAllJobs();

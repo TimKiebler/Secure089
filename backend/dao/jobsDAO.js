@@ -37,6 +37,21 @@ export default class JobsDAO {
     }
   }
 
+  static async deleteJob(jobName) {
+    try {
+      const existingJob = await jobs.findOne({ jobName });
+      if (!existingJob) {
+        return { error: "The job you're trying to delete does not exist." };
+      }
+  
+      const result = await jobs.deleteOne({ jobName: jobName }); // Use a filter object
+      return result;
+    } catch (e) {
+      console.error(`Unable to delete job: ${e}`);
+      return { error: e.message };
+    }
+  }
+
   static async getAllJobs() {
     try {
       const jobsList = await jobs.find().toArray();
