@@ -3,7 +3,55 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (jobData) {
       renderShifts(jobData);
     }
-  });
+    const plusIcon = document.getElementById("plus-icon");
+
+    plusIcon.addEventListener("click", async () => {
+        addNewJob();
+    });
+});
+
+async function addNewJob() {
+  // Get input values
+  const jobName = document.getElementById("job-name").value.trim();
+  const jobDescription = document.getElementById("job-description").value.trim();
+
+  if (!jobName || !jobDescription) {
+      alert("Bitte geben Sie einen Job-Namen und eine Beschreibung ein.");
+      return;
+  }
+
+  try {
+    // Send the data to the backend
+    const response = await fetch("http://localhost:8000/api/v1/users/jobs/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        'jobName': jobName,
+        'description': jobDescription
+      }),
+    });
+ 
+    const result = await response.json();
+
+    if (response.ok) {
+      // Insertion successful
+      console.log(result);
+      // Clear input fields
+      document.getElementById("job-name").value = "";
+      document.getElementById("job-description").value = "";
+      // refresh UI 
+      location.reload();
+    } else {
+      // Insertion failed
+      alert(`Fehler bei der Einfügung: ${result.error}`);
+    }
+  } catch (error) {
+    console.error("Fehler beim Senden der Daten:", error);
+    alert("Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.");
+  }
+}
 
 async function fetchJobData() {
   
@@ -27,9 +75,7 @@ async function fetchJobData() {
 
 // Function to generate shift cards
 function renderShifts(jobData) {
-    console.log(jobData)
     const container = document.getElementById("shift-container");
-    container.innerHTML = ""; // Clear existing content
 
     jobData.forEach(job => {
         // Create div for shift
@@ -38,7 +84,7 @@ function renderShifts(jobData) {
 
         // Fill div with shift details
         shiftDiv.innerHTML = `
-            <div id="top">
+            <div class="top">
               <h2>${job.jobName}</h2>
               <img src="trashcan-icon.png" class="trashcan-icon" data-jobname="${job.jobName}">
             </div>
@@ -66,16 +112,13 @@ async function handleTrashcanClick(jobName) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ 'jobName': jobName }) // Sendet den jobName als JSON-Body
+        body: JSON.stringify({ 'jobName': jobName }) 
         
     });
     if (response.ok) {
         console.log(`Job "${jobName}" erfolgreich gelöscht.`);
-        // Nach erfolgreicher Löschung die UI aktualisieren
-        const jobData = await fetchJobData();
-        if (jobData) {
-            renderShifts(jobData);
-        }
+        // reload UI
+        location.reload();
     } else {
         console.error(`Fehler beim Löschen des Jobs "${jobName}":`, response.statusText);
     }

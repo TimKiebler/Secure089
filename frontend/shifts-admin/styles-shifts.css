@@ -35,12 +35,6 @@ body {
     height: 70px;
 }
 
-#plus-icon {
-    position: relative;
-    left: 75%;
-    height: 45px;
-}
-
 /* sidebar */
 .sidebar {
     position: fixed;
@@ -112,7 +106,7 @@ a {
     text-align: left;
 }
 
-#top {
+.top {
     display: flex;
     flex-direction: row;
 }
@@ -146,6 +140,33 @@ hr {
     color: #1b7a2f;
 }
 
+#addJobDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#plus-icon {
+    width: 40px;
+}
+
+.input-label {
+    flex: 1;
+    white-space: nowrap; 
+}
+
+input {
+    flex: 2; 
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#job-description {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 700px) {
     .sidebar {
         display: none;
@@ -157,4 +178,3 @@ hr {
         grid-column: 1 / -1; 
     }
 }
-

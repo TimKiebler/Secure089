@@ -9,9 +9,7 @@
 <body>
 <!-- Topbar-->
      <div class="topbar">
-        <img id="logo" src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">
-        <img id="plus-icon" src="plus-icon.png">
-        
+        <img id="logo" src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">      
     </div>
 <!-- Sidebar-->
      <div class="sidebar">
@@ -27,7 +25,23 @@
         </ul>
     </div>
 <!-- main website-->
-    <div id="shift-container"></div>
+    <div id="shift-container">
+        <div id="addJobDiv" class="shift-card">
+            <div class="top">
+                <h2>Job hinzufügen</h2>
+                <img id="plus-icon" src="plus-icon.png">
+            </div>
+            <hr>
+            <div class="form-group">
+                <label class="input-label" for="job-name"><strong>Job Name</strong> (bitte einzigartig): </label>
+                <input type="text" id="job-name" required>
+            </div>
+            <div class="form-group">
+                <label class="input-label" for="job-description"><strong>Job Beschreibung: </strong></label>
+                <input type="text" id="job-description" required>
+            </div>
+        </div>
+    </div>
     <script src="script-shifts.js"></script>
     <script src="../script-loged-in.js"></script>
 </body>
