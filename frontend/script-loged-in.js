@@ -11,7 +11,7 @@ const email = localStorage.getItem("email");
 
 if (!token || !email) {
 // If token or email is missing, redirect to login page
-window.location.href = "../login/login.html";
+//window.location.href = "../login/login.html";
 return;
 }
 });
