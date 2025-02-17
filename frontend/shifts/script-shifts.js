@@ -1,34 +1,55 @@
-// Sample shift data
-const shifts = [
-    { name: "Morning Shift", description: "Start at 8 AM", requirements: "Must be punctual", positions: 5, positionsLeft: 1 },
-    { name: "Afternoon Shift", description: "Start at 2 PM", requirements: "Experience preferred", positions: 3, positionsLeft: 2 },
-    { name: "Night Shift", description: "Start at 10 PM", requirements: "Night owl required", positions: 2, positionsLeft: 1 }
-];
+document.addEventListener("DOMContentLoaded", async () => {
+    const jobData = await fetchJobData();
+    if (jobData) {
+      renderShifts(jobData);
+    }
+  });
+
+/*
+const jobData = await fetchJobData();
+  if (jobData) {
+    renderShifts(jobData);
+}*/
+
+async function fetchJobData() {
+  
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/users/jobs/getAll", {
+        method: "GET"
+      });
+  
+      if (response.ok) {
+        const jobData = await response.json();
+        return jobData; // Return the user data
+      } else {
+        console.error("Failed to fetch job data:", response.statusText);
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching job data:", error);
+      return null;
+    }
+}
 
 // Function to generate shift cards
-function renderShifts() {
+function renderShifts(jobData) {
+    console.log(jobData)
     const container = document.getElementById("shift-container");
     container.innerHTML = ""; // Clear existing content
 
-    shifts.forEach(shift => {
+    jobData.forEach(job => {
         // Create div for shift
         const shiftDiv = document.createElement("div");
         shiftDiv.classList.add("shift-card");
 
         // Fill div with shift details
         shiftDiv.innerHTML = `
-            <h2>${shift.name}</h2>
+            <h2>${job.jobName}</h2>
             <hr>
-            <p><strong>Beschreibung:</strong> ${shift.description}</p>
-            <p><strong>Vorrausetzungen:</strong> ${shift.requirements}</p>
-            <p class="positions"><strong>Anzahl Positionen:</strong> ${shift.positions}</p>
-            <p class="positions"><strong>Positionen noch verfügbar:</strong> ${shift.positionsLeft}</p>
+            <p><strong>Beschreibung:</strong> ${job.description}</p>
         `;
 
         // Append to container
         container.appendChild(shiftDiv);
     });
 }
-
-// Call function to render shifts when the page loads
-document.addEventListener("DOMContentLoaded", renderShifts);

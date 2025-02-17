@@ -7,7 +7,6 @@ dotenv.config();
 const SECRET_KEY = process.env['JWT_SECRET'];
 
 export default class UsersController {
-  // /api/users.controller.js
 
   static async apiRegisterUser(req, res) {
     try {
