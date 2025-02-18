@@ -26,6 +26,7 @@ static async addUser(firstName, lastName, email, password) {
       lastName,
       email,
       password,
+      isAdmin: false,
       registrationStep: 1, // Mark as step 1
       additionalData: {}, // Initialize empty object for additional data
       createdAt: new Date(),
