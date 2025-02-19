@@ -129,6 +129,11 @@ hr {
     color: #1b7a2f;
 }
 
+.apply-button {
+    height: 25px;
+    width: 100px;
+}
+
 @media (max-width: 700px) {
     .sidebar {
         display: none;
