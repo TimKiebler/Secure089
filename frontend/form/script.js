@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (userData) {
       populateForm(userData);
     }
+
+    // Show further information if applicant has further jobs
+    const yesOption = document.getElementById("Hauptjob-yes");
+    const noOption = document.getElementById("Hauptjob-no");
+    const extraInfoDiv = document.getElementById("extra-info");
+
+    function toggleVisibility() {
+        extraInfoDiv.style.display = yesOption.checked ? "flex" : "none";
+    }
+
+    yesOption.addEventListener("change", toggleVisibility);
+    noOption.addEventListener("change", toggleVisibility);
+
   });
 
 async function fetchUserData() {

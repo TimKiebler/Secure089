@@ -34,8 +34,8 @@
     </footer>
      <!-- Stammdaten -->
      <div class="stammdaten">
-        <div id="pers-daten" class="form"> 
-            <h2>Persönliche Daten</h2>
+        <div id="profilinformationen" class="form"> 
+            <h2>Profilinformationen</h2>
             <hr>
 
             <div class="form-body">
@@ -79,7 +79,7 @@
                         <option value="verwitwet">Verwitwet</option>
                         <option value="andere">Andere</option>
                     </select>
-                </div>
+                </div> 
 
                 <div class="form-group">
                     <label class="input-label" for="Geschlecht" >Geschlecht</label>
@@ -88,6 +88,11 @@
                         <option value="maennlich">Männlich</option>
                         <option value="weiblich">Weiblich</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label" for="Bewacher-ID" >Bewacher-ID (nur wenn vorhanden)</label>
+                    <input type="text" id="Bewacher-ID">
                 </div>
 
             </div>
@@ -159,12 +164,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="input-label" for="Hauptjob" >Haben sie einen Hauptjob?</label>
-                    <select id="Hauptjob" name="Hauptjob" required>
+                    <label class="input-label" for="versicherung" >Wie sind Sie versichert?</label>
+                    <select id="versicherung" name="versicherung" required>
                         <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="maennlich">Ja</option>
-                        <option value="weiblich">Nein</option>
+                        <option value="privat">privat</option>
+                        <option value="gesetzlich">gesetzlich</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label" for="Krankenkasse">Krankenkasse: </label>
+                    <input type="text" id="Krankenkasse" required>     
                 </div>
 
                 <div class="form-group">
@@ -175,18 +185,67 @@
                         <option value="weiblich">Nein</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label class="input-label" for="Geschlecht" >Sind sie arbeitslos gemeldet?</label>
-                    <select id="Geschlecht" name="Geschlecht" required>
-                        <option value="">--Bitte eine Option auswählen--</option>
-                        <option value="maennlich">Ja</option>
-                        <option value="weiblich">Nein</option>
-                    </select>
-                </div>
-
             </div>
 
+        </div>
+        <div id="other-jobs" class="form">
+            <h2>Weitere Beschäftigungsverhältnisse</h2>
+            <hr>
+            
+            <div class="form-group">
+                <label class="input-label" for="Hauptjob">Haben sie einen weiteren Job? </label>
+                <div class="form-group-radio">
+                    <input type="radio" name="Hauptjob" id="Hauptjob-yes" value="yes" required>
+                    <label for="no">Ja</label>
+                    <input type="radio" name="Hauptjob" id="Hauptjob-no" value="no" required>
+                    <label for="no">Nein</label> 
+                </div>
+            </div>
+
+            <div class="form-body" id="extra-info" style="display: none;">  
+                    <div class="form-group">
+                        <label class="input-label" for="company-name">Name des Unternehmens/Arbeitgebers der weiteren Tätigkeit:</label>
+                        <input type="text" id="company-name">  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="start-job">Beginn der Beschäftigung:</label>
+                        <input type="text" id="start-job">  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="job-type">Art der Beschäftigung:</label>
+                        <select id="job-type" name="job-type">
+                            <option value="">--Bitte eine Option auswählen--</option>
+                            <option value="maennlich">geringfügig (Minijob)</option>
+                            <option value="weiblich">sozialversicherungspflichtig</option>
+                        </select>  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="salary">Verdienst in Euro pro Monat:</label>
+                        <input type="text" id="salary">  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="company-name">Name des Unternehmens/Arbeitgebers der weiteren Tätigkeit:</label>
+                        <input type="text" id="company-name">  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="start-job">Beginn der Beschäftigung:</label>
+                        <input type="text" id="start-job">  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="job-type">Art der Beschäftigung:</label>
+                        <select id="job-type" name="job-type">
+                            <option value="">--Bitte eine Option auswählen--</option>
+                            <option value="maennlich">geringfügig (Minijob)</option>
+                            <option value="weiblich">sozialversicherungspflichtig</option>
+                        </select>  
+                    </div>
+                    <div class="form-group">
+                        <label class="input-label" for="salary">Verdienst in Euro pro Monat:</label>
+                        <input type="text" id="salary">  
+                    </div>
+                
+                
+            </div>
         </div>
         <div id="bankverbindung" class="form">
             <h2>Bankverbindung</h2>
@@ -200,8 +259,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="input-label" for="BIC">BIC</label>
-                    <input type="text" id="BIC" required>     
+                    <label class="input-label" for="kreditinstitut">Name des Kreditinstituts:</label>
+                    <input type="text" id="kreditinstitut" required>     
                 </div>
                 
                 <div class="form-group">
