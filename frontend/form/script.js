@@ -1,10 +1,5 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    const userData = await fetchUserData();
-    if (userData) {
-      populateForm(userData);
-    }
-
-    // Show further information if applicant has further jobs
+document.addEventListener("DOMContentLoaded", function () {
+// Show further information if applicant has further jobs
     const yesOption = document.getElementById("Hauptjob-yes");
     const noOption = document.getElementById("Hauptjob-no");
     const extraInfoDiv = document.getElementById("extra-info");
@@ -15,8 +10,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     yesOption.addEventListener("change", toggleVisibility);
     noOption.addEventListener("change", toggleVisibility);
+});
 
-  });
+document.addEventListener("DOMContentLoaded", async () => {
+    const userData = await fetchUserData();
+    if (userData) {
+      populateForm(userData);
+    }
+});
 
 async function fetchUserData() {
     const token = localStorage.getItem("token");
@@ -54,35 +55,57 @@ function populateForm(userData) {
       return;
     }
   
+  
     // Personal Data
     document.getElementById("Vorname").value = userData.firstName || "";
     document.getElementById("Nachname").value = userData.lastName || "";
-    document.getElementById("Geburtdatum").value = userData.dateOfBirth || "";
-    document.getElementById("Telefonnummer").value = userData.phoneNumber || "";
-    document.getElementById("Staatsangehoerigkeit").value = userData.nationality || "";
+    document.getElementById("Geburtdatum").value = userData.additionalData?.dateOfBirth || "";
+    document.getElementById("Telefonnummer").value = userData.additionalData?.phoneNumber || "";
+    document.getElementById("Staatsangehoerigkeit").value = userData.additionalData?.nationality || "";
     document.getElementById("email").value = userData.email || "";
-    document.getElementById("Familienstand").value = userData.maritalStatus || "";
-    document.getElementById("Geschlecht").value = userData.gender || "";
+    document.getElementById("Familienstand").value = userData.additionalData?.maritalStatus || "";
+    document.getElementById("Geschlecht").value = userData.additionalData?.gender || "";
+    document.getElementById("Bewacher-ID").value = userData.additionalData?.guardId || "";
   
     // Address
-    document.getElementById("Straße").value = userData.address?.street || "";
-    document.getElementById("Hausnummer").value = userData.address?.houseNumber || "";
-    document.getElementById("Postleitzahl").value = userData.address?.postalCode || "";
-    document.getElementById("Ort").value = userData.address?.city || "";
-    document.getElementById("Land").value = userData.address?.country || "";
+    document.getElementById("Straße").value = userData.additionalData?.address?.street || "";
+    document.getElementById("Hausnummer").value = userData.additionalData?.address?.houseNumber || "";
+    document.getElementById("Postleitzahl").value = userData.additionalData?.address?.postalCode || "";
+    document.getElementById("Ort").value = userData.additionalData?.address?.city || "";
+    document.getElementById("Land").value = userData.additionalData?.address?.country || "";
   
-    // Tax Data
-    document.getElementById("Geburtsname").value = userData.birthName || "";
-    document.getElementById("Geburtsort").value = userData.birthPlace || "";
-    document.getElementById("Geburtsland").value = userData.birthCountry || "";
-    document.getElementById("Steuer-ID").value = userData.taxId || "";
-    document.getElementById("Sozialversicherungsnummer").value = userData.socialSecurityNumber || "";
-    document.getElementById("Hauptjob").value = userData.hasMainJob ? "Ja" : "Nein";
-    document.getElementById("Student").value = userData.isStudent ? "Ja" : "Nein";
-    document.getElementById("Geschlecht").value = userData.isRegisteredUnemployed ? "Ja" : "Nein";
+    // Birth Details
+    document.getElementById("Geburtsname").value = userData.additionalData?.birthDetails?.birthName || "";
+    document.getElementById("Geburtsort").value = userData.additionalData?.birthDetails?.birthPlace || "";
+    document.getElementById("Geburtsland").value = userData.additionalData?.birthDetails?.birthCountry || "";
+  
+    // Tax Details
+    document.getElementById("Steuer-ID").value = userData.additionalData?.taxDetails?.taxId || "";
+    document.getElementById("Sozialversicherungsnummer").value = userData.additionalData?.taxDetails?.socialSecurityNumber || "";
+  
+    // Insurance Details
+    document.getElementById("versicherung").value = userData.additionalData?.insuranceDetails?.insuranceType || "";
+    document.getElementById("Krankenkasse").value = userData.additionalData?.insuranceDetails?.healthInsurance || "";
+  
+    // Student Status
+    document.getElementById("Student").value = userData.additionalData?.isStudent ? "Ja" : "Nein";
+  
+    // Other Job Details
+    const hasOtherJob = userData.additionalData?.hasOtherJob || false;
+    if (hasOtherJob) {
+      document.getElementById("Hauptjob-yes").checked = true;
+      document.getElementById("extra-info").style.display = "block"; // Show additional fields
+      document.getElementById("company-name").value = userData.additionalData?.otherJobDetails?.companyName || "";
+      document.getElementById("start-job").value = userData.additionalData?.otherJobDetails?.startDate || "";
+      document.getElementById("job-type").value = userData.additionalData?.otherJobDetails?.jobType || "";
+      document.getElementById("salary").value = userData.additionalData?.otherJobDetails?.salary || "";
+    } else {
+      document.getElementById("Hauptjob-no").checked = true;
+      document.getElementById("extra-info").style.display = "none"; // Hide additional fields
+    }
   
     // Bank Details
-    document.getElementById("Kontoinhaber").value = userData.bankAccount?.accountHolder || "";
-    document.getElementById("BIC").value = userData.bankAccount?.bic || "";
-    document.getElementById("IBAN").value = userData.bankAccount?.iban || "";
-}
+    document.getElementById("Kontoinhaber").value = userData.additionalData?.bankDetails?.bankAccountHolder || "";
+    document.getElementById("kreditinstitut").value = userData.additionalData?.bankDetails?.bankName || "";
+    document.getElementById("IBAN").value = userData.additionalData?.bankDetails?.iban || "";
+  }

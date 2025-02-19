@@ -31,26 +31,85 @@ export default class UsersController {
 
   static async apiCompleteRegistration(req, res) {
     try {
-      const { email, phoneNumber, address, dateOfBirth, profilePicture, bio } = req.body;
-
+      const {
+        firstName,
+        lastName,
+        email,
+        dateOfBirth,
+        phoneNumber,
+        nationality,
+        maritalStatus,
+        gender,
+        guardId,
+        street,
+        houseNumber,
+        postalCode,
+        city,
+        country,
+        birthName,
+        birthPlace,
+        birthCountry,
+        taxId,
+        socialSecurityNumber,
+        insuranceType,
+        healthInsurance,
+        isStudent,
+        hasOtherJob,
+        otherJobDetails,
+        bankAccountHolder,
+        bankName,
+        iban,
+      } = req.body;
+  
       if (!email) {
         return res.status(400).json({ error: "Email is required" });
       }
-
+  
       const additionalData = {
-        phoneNumber,
-        address,
+        firstName,
+        lastName,
         dateOfBirth,
-        profilePicture,
-        bio,
+        phoneNumber,
+        nationality,
+        maritalStatus,
+        gender,
+        guardId,
+        address: {
+          street,
+          houseNumber,
+          postalCode,
+          city,
+          country,
+        },
+        birthDetails: {
+          birthName,
+          birthPlace,
+          birthCountry,
+        },
+        taxDetails: {
+          taxId,
+          socialSecurityNumber,
+        },
+        insuranceDetails: {
+          insuranceType,
+          healthInsurance,
+        },
+        isStudent,
+        hasOtherJob,
+        otherJobDetails,
+        bankDetails: {
+          bankAccountHolder,
+          bankName,
+          iban,
+        },
       };
-
+  
       const updateResponse = await UsersDAO.updateUser(email, additionalData);
-
+  
       if (updateResponse.error) {
         return res.status(400).json({ error: updateResponse.error });
       }
-
+  
       res.json({ status: "success", message: "Registration completed successfully." });
     } catch (e) {
       res.status(500).json({ error: e.message });
