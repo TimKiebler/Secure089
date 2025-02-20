@@ -7,7 +7,8 @@ const router = express.Router()
 router.route("/register").post(UsersCtrl.apiRegisterUser)
 router.route("/register/complete").post(UsersCtrl.apiCompleteRegistration);
 router.route("/login").post(UsersCtrl.apiLoginUser)
-router.route("/me").get(UsersCtrl.apiGetUserData);
+router.route("/getUser").get(UsersCtrl.apiGetUserData);
+router.route("/me").get(UsersCtrl.apiGetUserDataOfCurrentUser);
 router.route("/").get(UsersCtrl.apiGetUsers)
 
 router.route("/jobs/add").post(JobsCtrl.apiAddJob)

@@ -140,7 +140,7 @@ export default class UsersController {
     }
   }
 
-  static async apiGetUserData(req, res) {
+  static async apiGetUserDataOfCurrentUser(req, res) {
     try {
       const token = req.headers.authorization.split(" ")[1]; // Extract token from header
       const decoded = jwt.verify(token, SECRET_KEY); // Verify the token
@@ -152,6 +152,24 @@ export default class UsersController {
       }
   
       res.json(user); // Return the user data
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async apiGetUserData(req, res) {
+    try {
+      const email = req.query.email; // Get the email from the query parameters
+      if (!email) {
+        return res.status(400).json({ error: "Email is required" });
+      }
+  
+      const user = await UsersDAO.getUser(email);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      res.json(user);
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
