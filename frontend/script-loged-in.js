@@ -4,7 +4,7 @@ document.getElementById("logout-button").addEventListener("click", () => {
     window.location.href = "../login/login.html"; // Redirect to login page
   });
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 // Retrieve token and email from localStorage
 const token = localStorage.getItem("token");
 const email = localStorage.getItem("email");
@@ -13,6 +13,16 @@ if (!token || !email) {
 // If token or email is missing, redirect to login page
 window.location.href = "../login/login.html";
 return;
+}
+try {
+  const userData = await fetchUserData();
+  if (userData && checkIfAdmin(userData)) {
+      document.getElementById("mitarbeiter").style.display = "block"; // Show element
+  } else {
+      document.getElementById("mitarbeiter").style.display = "none"; // Hide element
+  }
+} catch (error) {
+  console.error("Error fetching user data:", error);
 }
 });
 

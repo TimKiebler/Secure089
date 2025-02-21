@@ -57,8 +57,6 @@ function renderEmployeeList(employeeList) {
             <p style="text-indent: 30px;"><strong>Geburtsland:</strong> ${user.additionalData?.birthDetails?.birthCountry}</p>
             <p style="text-indent: 30px;"><strong>Geburtsdatum:</strong> ${user.additionalData?.dateOfBirth}</p>
             <p style="text-indent: 30px;"><strong>Nationalität:</strong> ${user.additionalData?.nationality}</p>
-
-
         `;
 
         // Append to container
