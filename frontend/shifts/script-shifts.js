@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const jobData = await fetchJobData();
+    const jobData = await fetchEmployees();
     if (jobData) {
       renderShifts(jobData);
     }
@@ -11,7 +11,7 @@ const jobData = await fetchJobData();
     renderShifts(jobData);
 }*/
 
-async function fetchJobData() {
+async function fetchEmployees() {
   
     try {
       const response = await fetch("http://localhost:8000/api/v1/users/jobs/getAll", {
