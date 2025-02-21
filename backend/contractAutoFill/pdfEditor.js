@@ -27,13 +27,14 @@ async function fillPDF(userData) {
   const pdfDoc = await loadPDFTemplate();
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const form = pdfDoc.getForm();
-  const [firstPage, secondPage] = pdfDoc.getPages();
+  const [firstPage, secondPage, thirdPage] = pdfDoc.getPages();
 
   fillFormFields(form, userData);
   fillGenderField(firstPage, font, userData.additionalData?.gender);
   fillInsuranceField(firstPage, font, userData.additionalData?.insuranceDetails?.insuranceType);
   fillJobTypeField(firstPage, font, userData.additionalData?.otherJobDetails?.jobType);
   fillSecondPage(secondPage, font, userData.firstName, userData.lastName, userData.additionalData?.taxDetails?.socialSecurityNumber);
+  fillThirdPage(thirdPage, font, "Adrian Meta", "12345678");
 
   await savePDF(pdfDoc);
 }
@@ -121,6 +122,12 @@ function fillSecondPage(page, font, firstName, lastName, socialSecurityNumber) {
   drawTextOnPdf({ x: 110, y: 390, size: 12 }, firstName, font, page);
   drawTextOnPdf({ x: 110, y: 353, size: 12 }, lastName, font, page);
   drawTextOnPdf({ x: 197, y: 320, size: 15 }, spacedNumber(socialSecurityNumber), font, page);
+}
+
+// Function to fill the third page
+function fillThirdPage(page, font, ceo, CompanyID) {
+  drawTextOnPdf({ x: 115, y: 640, size: 12 }, ceo, font, page);
+  drawTextOnPdf({ x: 140, y: 614, size: 15 }, spacedNumber(CompanyID), font, page);
 }
 
 // Function to draw text on the PDF
