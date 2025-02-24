@@ -42,7 +42,6 @@ document.getElementById("schichten").addEventListener("click", async () => {
 
 async function fetchUserData() {
   const token = localStorage.getItem("token");
-  console.log("test");
   if (!token) {
     alert("You are not logged in. Redirecting to login page...");
     window.location.href = "../login/login.html";
