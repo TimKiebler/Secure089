@@ -156,7 +156,7 @@ hr {
     white-space: nowrap; 
 }
 
-input {
+input:not([type="radio"]) {
     flex: 2; 
     width: 100%;
     padding: 8px;
@@ -167,6 +167,36 @@ input {
 #job-description {
     margin-bottom: 20px;
 }
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.radio-body {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: left;
+    gap: 10px;
+    font-size: 14px;
+}
+
+input[type="radio"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+}
+
 
 @media (max-width: 700px) {
     .sidebar {
