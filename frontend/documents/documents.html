@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure 089 Mitarbeiter Portal Dokumente</title>
+    <link rel="stylesheet" href="styles-documents.css">
+</head>
+<body>
+<!-- Topbar-->
+     <div class="topbar">
+        <img id="logo" src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">
+        
+    </div>
+<!-- Sidebar-->
+     <div class="sidebar">
+        <div class="header-text">
+            <span class="name">CREW PORTAL</span>
+            <hr>
+        </div>
+        <ul class="sidebar-items">
+            <li id="home"><a href="../home/home.html">Home</a></li>
+            <li id="dokumente"><a>Dokumente</a></li>
+            <li id="stammdaten"><a href="../form/form.html">Stammdaten</a></li>
+            <li id="schichten"><a>Offene Stellen</a></li>
+            <li id="mitarbeiter" display="none" ><a href="../employees/employees.html">Mitarbeiter</a></li>
+            <li id="logout-button"><a>Ausloggen</a></li>   
+        </ul>
+    </div>
+<!-- main website-->
+       <!-- <iframe class="webside" src="https://www.secure089.de/" width="100%" height="100%" style="border: none;"></iframe> -->
+    <div id="main-website">
+        <div id="documents" class="form">
+            
+            <h2>Bitte lade hier folgende Dokumente für deine Bewerbung hoch:</h2>
+            <hr>
+
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label class="input-label" for="foto">Foto</label>
+                    <input type="file" id="foto">     
+                </div>
+                
+                <div class="form-group">
+                    <label class="input-label" for="lebenslauf">Lebenslauf</label>
+                    <input type="file" id="lebenslauf" required>     
+                </div>
+                
+                <div class="form-group">
+                    <label class="input-label" for="34a">Unterrichtung nach §34a</label>
+                    <input type="file" id="34a">     
+                </div>
+
+                <div class="form-group">
+                    <label class="input-label" for="sachkundeprüfung">Sachkundeprüfung</label>
+                    <input type="file" id="sachkundeprüfung">     
+                </div>
+
+            </div>
+            <div class="form-group-checkbox">
+                <input type="checkbox" id="bestätigung" required> 
+                <label class="checkbox-label" for="bestätigung">Hiermit bestätige ich, dass alle meine Angaben richtig sind.</label> 
+            </div>
+
+            <input type="submit" id="submit-button" value="Dokumente abschicken">
+        </div>
+    </div>
+     
+</body>
+<script src="../script-loged-in.js"></script>
+</html>
