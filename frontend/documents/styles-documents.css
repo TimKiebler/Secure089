@@ -145,7 +145,7 @@ input[type="checkbox"] {
     height: 18px;
     cursor: pointer;
 }
-input[type="submit"] {
+#submit-button {
     background-color: var(--color-sidebar);
     color: var(--color-sidebar-content);
     cursor: pointer;

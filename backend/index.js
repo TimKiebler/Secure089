@@ -2,6 +2,7 @@ import app from "./server.js"
 import mongodb from "mongodb"
 import UsersDAO from "./dao/usersDAO.js"
 import JobsDAO from "./dao/jobsDAO.js"
+import FilesDAO from "./dao/filesDAO.js"
 import dotenv from "dotenv"
 
 dotenv.config();
@@ -26,6 +27,7 @@ MongoClient.connect(uri, { maxPoolSize: 50, wtimeoutMS: 2500, useNewUrlParser: t
   .then(async client => {
     await UsersDAO.injectDB(client)
     await JobsDAO.injectDB(client)
+    await FilesDAO.injectDB(client);
     app.listen(port, () => {
       console.log(`Listening on port ${port}`)
     })

@@ -1,3 +1,3 @@
-curl -X POST http://localhost:8000/api/v1/users/jobs/add \
+curl -X POST http://localhost:8000/api/v1/users/get \
      -H "Content-Type: application/json" \
-     -d '{"jobName": "Filmcasiono", "description": "Türsteher im Filmcasino"}'
+     -F "file=@/Users/timkiebler/Haskell/test.pdf"'

@@ -1,4 +1,5 @@
 import UsersDAO from "../dao/usersDAO.js"
+import FilesDAO from "../dao/filesDAO.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
@@ -18,6 +19,9 @@ export default class UsersController {
 
       const hashedPassword = await bcrypt.hash(password, 10);
       const userResponse = await UsersDAO.addUser(firstName, lastName, email, hashedPassword);
+
+      // Initialize the user's file document
+      await FilesDAO.initializeUserFiles(email);
 
       if (userResponse.error) {
         return res.status(400).json({ error: userResponse.error });

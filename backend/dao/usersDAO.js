@@ -9,6 +9,7 @@ export default class UsersDAO {
     }
     try {
       users = await conn.db("secure089").collection("users")
+      console.log("Connected to users collection");
     } catch (e) {
       console.error(`Unable to establish collection: ${e}`)
     }
