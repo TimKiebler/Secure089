@@ -14,8 +14,10 @@ async function addNewJob() {
   // Get input values
   const jobName = document.getElementById("job-name").value.trim();
   const jobDescription = document.getElementById("job-description").value.trim();
+  const employedAs =  document.querySelector('input[name="employed-as"]:checked')?.value;
+  const contractType = document.querySelector('input[name="contractType"]:checked')?.value;
 
-  if (!jobName || !jobDescription) {
+  if (!jobName || !jobDescription || !employedAs || !contractType) {
       alert("Bitte geben Sie einen Job-Namen und eine Beschreibung ein.");
       return;
   }
@@ -29,7 +31,9 @@ async function addNewJob() {
       },
       body: JSON.stringify({
         'jobName': jobName,
-        'description': jobDescription
+        'description': jobDescription,
+        'employedAs': employedAs,
+        'contractType': contractType
       }),
     });
  

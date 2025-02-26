@@ -15,7 +15,7 @@ export default class JobsDAO {
     }
   }
 
-  static async addJob(jobName, description) {
+  static async addJob(jobName, description, employedAs, contractType) {
     try {
       const existingJob = await jobs.findOne({ jobName });
       if (existingJob) {
@@ -25,6 +25,8 @@ export default class JobsDAO {
       const jobDoc = {
         jobName,
         description,
+        employedAs,
+        contractType,
         createdAt: new Date(),
         updatedAt: new Date(),
       };

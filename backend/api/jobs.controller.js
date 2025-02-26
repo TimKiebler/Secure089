@@ -3,13 +3,13 @@ import JobsDAO from "../dao/jobsDAO.js";
 export default class JobsController {
   static async apiAddJob(req, res) {
     try {
-      const { jobName, description } = req.body;
+      const { jobName, description, employedAs, contractType } = req.body;
 
-      if (!jobName || !description) {
+      if (!jobName || !description || !employedAs || !contractType) {
         return res.status(400).json({ error: "Missing required fields: jobName and description" });
       }
 
-      const jobResponse = await JobsDAO.addJob(jobName, description);
+      const jobResponse = await JobsDAO.addJob(jobName, description, employedAs, contractType);
 
       if (jobResponse.error) {
         return res.status(400).json({ error: jobResponse.error });
@@ -18,7 +18,7 @@ export default class JobsController {
       res.json({ status: "success", message: "Job added successfully." });
     } catch (e) {
       console.error(`Error in apiAddJob: ${e.message}`);
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: `Internal server error: ${e.message}` });
     }
   }
 
