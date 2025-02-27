@@ -13,13 +13,16 @@
     --color-logo: #194379;
 
     --sidebar-font: Arial, sans-serif;
+
+    --topbar-height: 100px;
+    --footer-height: 100px;
     
 }
 
 body {
     background-color: var(--color-body);
     display: grid;
-    grid-template-rows: 100px auto auto;
+    grid-template-rows: var(--topbar-height) auto var(--topbar-height);
     grid-template-columns: 200px calc(100vw - 200px);
     overflow-x: hidden;
 }
@@ -130,6 +133,7 @@ footer {
 .stammdaten {
     grid-row: 2;
     grid-column: 2;
+    min-height: calc(100vh - var(--topbar-height) - var(--footer-height));
     font-family:Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-rows: auto;
