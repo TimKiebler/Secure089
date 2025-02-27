@@ -21,7 +21,7 @@
 body {
     background-color: var(--color-body);
     display: grid;
-    grid-template-rows: var(--topbar-height) auto var(--topbar-height);
+    grid-template-rows: var(--topbar-height) auto var(--footer-height);
     grid-template-columns: 200px calc(100vw - 200px);
     height: 100vh;
 }
@@ -135,7 +135,7 @@ footer {
 #main-website {
     grid-row: 2;
     grid-column: 2;
-    min-height: calc(100vh - var(--topbar-height) - var(--footer-height));
+    /*min-height: calc(100vh - var(--topbar-height) - var(--footer-height));*/
     font-family:Arial, Helvetica, sans-serif;
     padding: 20px 50px;
 }
@@ -166,12 +166,16 @@ hr {
     height: 100%;
     gap: 30px;
     color: rgb(91, 90, 90);
+    padding: 10px 20px;
 }
 .form-group {
     flex: 1 1 calc(50% - 20px);
     display: flex;
     flex-direction: column; 
     gap: 15px; 
+    border: 1px solid rgb(209, 208, 208);
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .input-label {

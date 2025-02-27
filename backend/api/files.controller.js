@@ -1,4 +1,5 @@
 import FilesDAO from '../dao/filesDAO.js';
+import { fetchUserAndFillPDF } from "../contractAutoFill/fillPersonalfragebogen.js"; 
 
 export default class FilesController {
   
@@ -78,5 +79,31 @@ export default class FilesController {
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
+  }
+
+  static async apiGetPersonalfragebogen(req, res) {
+    const { email } = req.query; 
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
+  try {
+    // Fetch user data and fill the PDF
+    const pdfBytes = await fetchUserAndFillPDF(email);
+    
+    if (!pdfBytes || pdfBytes.length === 0) {
+      console.log("Generated PDF is empty")
+      return res.status(500).json({ error: "Generated PDF is empty" });
+    }
+    
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", 'attachment; filename="filled-contract.pdf"');
+    res.setHeader("Content-Length", pdfBytes.length); // Ensure correct file size
+    res.end(Buffer.from(pdfBytes)); // Correct way to send binary data
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+    res.status(500).json({ error: "Failed to generate PDF" });
+  }
   }
 }

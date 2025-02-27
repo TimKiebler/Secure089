@@ -10,4 +10,6 @@ router.post('/upload/:field', upload.single('file'), FilesController.apiUploadFi
 router.get('/:field', FilesController.apiDownloadFile);
 router.get('/metadata/:email', FilesController.apiGetMetadata);
 
+router.get('/download/personalfragebogen', FilesController.apiGetPersonalfragebogen);
+
 export default router;

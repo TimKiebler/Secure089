@@ -4,19 +4,20 @@ import fs from "fs";
 import { getUserData } from "./fetchUserData.js";
 
 // Constants
-const TEMPLATE_PATH = "backend/contractAutoFill/Personalfragebogen-KB-MJ.pdf";
+const TEMPLATE_PATH = "/Users/timkiebler/HTML/Secure089/Secure089/backend/contractAutoFill/Personalfragebogen.pdf";
 const OUTPUT_PATH = "backend/contractAutoFill/filled-contract.pdf";
 
 // Main function to fetch user data and fill the PDF
-async function fetchUserAndFillPDF(email) {
+export async function fetchUserAndFillPDF(email) {
   try {
     const userData = await getUserData(email);
     if (!userData) {
       throw new Error("User not found");
     }
 
-    await fillPDF(userData);
+    const pdfBytes = await fillPDF(userData);
     console.log("PDF saved as: filled-contract.pdf");
+    return pdfBytes;
   } catch (error) {
     console.error("Error fetching user data or filling PDF:", error);
   }
@@ -36,7 +37,8 @@ async function fillPDF(userData) {
   fillSecondPage(secondPage, font, userData.firstName, userData.lastName, userData.additionalData?.taxDetails?.socialSecurityNumber);
   fillThirdPage(thirdPage, font, "Adrian Meta", "74240237");
 
-  await savePDF(pdfDoc);
+  const pdfBytes = await pdfDoc.save(); // Save the PDF and return the bytes
+  return pdfBytes;
 }
 
 // Function to load the PDF template
@@ -154,6 +156,3 @@ async function savePDF(pdfDoc) {
   const pdfBytes = await pdfDoc.save();
   fs.writeFileSync(OUTPUT_PATH, pdfBytes);
 }
-
-// Example usage
-fetchUserAndFillPDF("tim.kiebler@gmx.de");
