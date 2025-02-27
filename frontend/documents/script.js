@@ -18,6 +18,14 @@ async function handleFileUpload() {
 
   for (const field in fileInputs) {
     const file = fileInputs[field].files[0];
+    const maxSize = 2 * 1024 * 1024; // 2MB limit
+
+    if (file && file.size > maxSize) {
+      alert("File size exceeds 2MB. Please upload a smaller file.");
+      this.value = ""; // Clear the input
+      return;
+    }
+
     if (file) {
       await uploadFileToField(field, file, userEmail);
     }

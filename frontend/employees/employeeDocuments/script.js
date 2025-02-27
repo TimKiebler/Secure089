@@ -1,9 +1,13 @@
-const urlParams = new URLSearchParams(window.location.search);
-const employeeEmail = urlParams.get("email");
-
 
 document.addEventListener("DOMContentLoaded", async () => {
-    await displayUploadedFilenames();
+  const urlParams = new URLSearchParams(window.location.search);
+  const email = urlParams.get("email");
+
+  if (email) {
+    sessionStorage.setItem("userEmail", email);
+  }
+  
+  await displayUploadedFilenames();
 });
   
 const fileInputs = {
@@ -22,6 +26,14 @@ async function handleFileUpload() {
 
   for (const field in fileInputs) {
     const file = fileInputs[field].files[0];
+    const maxSize = 2 * 1024 * 1024; // 2MB limit
+
+    if (file && file.size > maxSize) {
+      alert("File size exceeds 2MB. Please upload a smaller file.");
+      this.value = ""; // Clear the input
+      return;
+    }
+
     if (file) {
       await uploadFileToField(field, file, userEmail);
     }
@@ -101,7 +113,9 @@ async function downloadFile(field, userEmail) {
 }
 
 function getUserEmail() {
-  const userEmail = employeeEmail;
+  const urlParams = new URLSearchParams(window.location.search);
+  let userEmail = urlParams.get("email") || sessionStorage.getItem("userEmail");
+
   if (!userEmail) {
       console.error("Es wurde keine Mitarbeiter Mail weitergegeben");
       window.location.href = "../employees.html";
