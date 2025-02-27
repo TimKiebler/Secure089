@@ -75,4 +75,36 @@ export default class FilesDAO {
       return { error: e };
     }
   }
+
+  static async getUploadedFilenames(email) {
+    try {
+
+      const userFiles = await files.findOne(
+        { email },
+        { projection: { 
+            "lebenslauf.filename": 1, 
+            "foto.filename": 1, 
+            "34a.filename": 1, 
+            "sachkundeprüfung.filename": 1 
+          } 
+        }
+      );
+  
+      if (!userFiles) {
+        return res.status(404).json({ error: "User not found" });
+      }
+  
+      // Extract filenames only where a file exists
+      const filenames = {};
+        ["foto", "lebenslauf", "34a", "sachkundeprüfung"].forEach((field) => {
+            filenames[field] = userFiles[field]?.filename || "keine Datei hochgeladen";
+        });
+  
+      return filenames;
+    } catch (e) {
+      console.error(`Error fetching filenames: ${e.message}`);
+      return { error: "Internal Server Error" };
+    }
+  }
+  
 }

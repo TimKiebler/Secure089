@@ -59,4 +59,24 @@ export default class FilesController {
     res.status(500).json({ error: e.message });
   }
   }
+
+  static async apiGetMetadata(req, res) {
+    try {
+      const { email } = req.params; // Get the user's email from the query parameters
+  
+      if (!email) {
+        return res.status(400).json({ error: 'User email not found' });
+      }
+      // Fetch the user's uploaded filenames
+      const metadata = await FilesDAO.getUploadedFilenames(email);
+  
+      if (!metadata) {
+        return res.status(404).json({ error: 'User files not found' });
+      }
+  
+      res.json(metadata);
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
 }

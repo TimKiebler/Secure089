@@ -40,23 +40,38 @@
                     
                     <div class="form-group">
                         <label class="input-label" for="foto">Foto</label>
-                        <input type="file" id="foto" name="foto">     
+                        <input type="file" id="foto" name="foto">    
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-foto"></label>
+                            <button type="button" class="download-button" id="button-foto" style="display: none;">Download</button>
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="input-label" for="lebenslauf">Lebenslauf</label>
-                        <input type="file" id="lebenslauf" name="lebenslauf" required>     
-                        <button type="button" class="download-button" id="button-lebenslauf">download der aktuell hochgeladenen Datei</button>
+                        <input type="file" id="lebenslauf" name="lebenslauf" required>
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-lebenslauf" ></label>
+                            <button type="button" class="download-button" id="button-lebenslauf" style="display: none;">Download</button>
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="input-label" for="34a">Unterrichtung nach §34a</label>
-                        <input type="file" id="34a" name="34a">     
+                        <input type="file" id="34a" name="34a">
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-34a" ></label>
+                            <button type="button" class="download-button" id="button-34a" style="display: none;">Download</button>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label class="input-label" for="sachkundeprüfung">Sachkundeprüfung</label>
-                        <input type="file" id="sachkundeprüfung" name="sachkundeprüfung">     
+                        <input type="file" id="sachkundeprüfung" name="sachkundeprüfung">
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-sachkundeprüfung" ></label>     
+                            <button type="button" class="download-button" id="button-sachkundeprüfung" style="display: none;">Download</button>
+                        </div>
                     </div>
 
                 </div>
@@ -64,8 +79,9 @@
                     <input type="checkbox" id="bestätigung" required> 
                     <label class="checkbox-label" for="bestätigung">Hiermit bestätige ich, dass alle meine Angaben richtig sind.</label> 
                 </div>
-
-                <input type="submit" id="submit-button" value="Dokumente abschicken">
+                <div id="submit-button-container">
+                    <input type="submit" id="submit-button" value="Dokumente abschicken">
+                </div>
             </form>
         </div>
     </div>
