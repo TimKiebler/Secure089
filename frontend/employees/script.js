@@ -57,6 +57,10 @@ function renderEmployeeList(employeeList) {
             <p style="text-indent: 30px;"><strong>Geburtsland:</strong> ${user.additionalData?.birthDetails?.birthCountry}</p>
             <p style="text-indent: 30px;"><strong>Geburtsdatum:</strong> ${user.additionalData?.dateOfBirth}</p>
             <p style="text-indent: 30px;"><strong>Nationalität:</strong> ${user.additionalData?.nationality}</p>
+
+            <div id="button-container">
+              <a href="./employeeDocuments/employee.html?email=${user.email}" class="button-style">zugehörige Dokumente</a>
+            </div>
         `;
 
         // Append to container

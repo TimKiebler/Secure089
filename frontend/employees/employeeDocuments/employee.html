@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure 089 Mitarbeiter Portal Dokumente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Topbar-->
+     <div class="topbar">
+        <img id="logo" src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">
+        
+    </div>
+<!-- Sidebar-->
+     <div class="sidebar">
+        <div class="header-text">
+            <span class="name">CREW PORTAL</span>
+            <hr>
+        </div>
+        <ul class="sidebar-items">
+            <li id="home"><a href="../home/home.html">Home</a></li>
+            <li id="dokumente"><a>Dokumente</a></li>
+            <li id="stammdaten"><a href="../form/form.html">Stammdaten</a></li>
+            <li id="schichten"><a>Offene Stellen</a></li>
+            <li id="mitarbeiter"><a href="../employees.html">Mitarbeiter</a></li>
+            <li id="logout-button"><a>Ausloggen</a></li>   
+        </ul>
+    </div>
+
+<!-- main website-->
+       <!-- <iframe class="webside" src="https://www.secure089.de/" width="100%" height="100%" style="border: none;"></iframe> -->
+    <div id="main-website">
+        <div id="documents" class="form">
+            
+            <h2>Der Nutzer hat folgende Dokumente hochgeladen:</h2>
+            <hr>
+
+            <form id="upload-form" enctype="multipart/form-data">
+                <div class="form-body">
+                    
+                    <div class="form-group">
+                        <label class="input-label" for="foto"><strong>Foto</strong></label>
+                        <input type="file" id="foto" name="foto">    
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-foto"></label>
+                            <button type="button" class="download-button" id="button-foto" style="display: none;">Download</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="input-label" for="lebenslauf"><strong>Lebenslauf</strong></label>
+                        <input type="file" id="lebenslauf" name="lebenslauf">
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-lebenslauf" ></label>
+                            <button type="button" class="download-button" id="button-lebenslauf" style="display: none;">Download</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="input-label" for="34a"><strong>Unterrichtung nach §34a</strong></label>
+                        <input type="file" id="34a" name="34a">
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-34a" ></label>
+                            <button type="button" class="download-button" id="button-34a" style="display: none;">Download</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label" for="sachkundeprüfung"><strong>Sachkundeprüfung</strong></label>
+                        <input type="file" id="sachkundeprüfung" name="sachkundeprüfung">
+                        <div class="current-file-container">
+                            <label class="current-file" id="current-sachkundeprüfung" ></label>     
+                            <button type="button" class="download-button" id="button-sachkundeprüfung" style="display: none;">Download</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="submit-button-container">
+                    <input type="submit" id="submit-button" value="Dokumente hochladen">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
