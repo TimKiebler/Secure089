@@ -11,5 +11,7 @@ router.get('/:field', FilesController.apiDownloadFile);
 router.get('/metadata/:email', FilesController.apiGetMetadata);
 
 router.get('/download/personalfragebogen', FilesController.apiGetPersonalfragebogen);
+//router.get('/download/arbeitsvertrag', FilesController.apiGetArbeitsvertrag);
+router.get('/download/dienstausweis', FilesController.apiGetDienstausweis);
 
 export default router;
