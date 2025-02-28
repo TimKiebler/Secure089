@@ -25,11 +25,30 @@ function handleApplyButtonClick(button) {
 
     console.log(`Apply button clicked for shift: ${shiftName}`);
 
-    applyForShift(shiftName,);
+    applyForJob(shiftName,);
 }
 
-async function applyForShift(shiftName) {
-    
+async function applyForJob(jobName) {
+  const aplicantEmailAdresss = localStorage.getItem("email");
+
+  try {
+    const response = await fetch("http://localhost:8000/api/v1/users/apply", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ aplicantEmailAdresss, jobName }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("Email sent successfully!");
+  } catch (error) {
+    console.error("Failed to send email:", error);
+  }
 }
 
 async function fetchUserData() {

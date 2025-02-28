@@ -1,4 +1,5 @@
 import JobsDAO from "../dao/jobsDAO.js";
+import { sendEmail } from "../mail/automated.email.js";
 
 export default class JobsController {
   static async apiAddJob(req, res) {
@@ -55,6 +56,25 @@ export default class JobsController {
     } catch (e) {
       console.error(`Error in apiGetJobs: ${e.message}`);
       res.status(500).json({ error: "Internal server error" });
+    }
+  }
+
+  static async apiApplyForJob(req, res) {
+    const { aplicantEmailAdresss, jobName } = req.body; 
+
+    if (!aplicantEmailAdresss || !jobName) {
+      return res.status(400).json({ error: "Missing required fields (aplicantEmailAdresss, jobName, aplicantName)" });
+    }
+
+    try {
+      const content =  aplicantEmailAdresss + 
+      " hat sich auf die folgende Position beworben: " + jobName;
+      
+      await sendEmail("tim.kiebler@gmail.com", "neue Bewerbung", content);
+      res.status(200).json({ message: "Email sent successfully" });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      res.status(500).json({ error: "Failed to send email" });
     }
   }
 }
