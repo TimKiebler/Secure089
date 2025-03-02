@@ -188,3 +188,35 @@ badgeButton.addEventListener("click", async () => {
   }
 });
 
+const contractButton = document.getElementById("button-arbeitsvertrag");
+
+contractButton.addEventListener("click", async () => {
+  const userEmail = getUserEmail();
+  const JobName = document.getElementById("jobName-input").value;
+
+  try {
+    // Call the backend API to generate the PDF
+    const response = await fetch(`http://localhost:8000/api/v1/files/download/arbeitsvertrag/?email=${userEmail}&jobName=${JobName}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Convert the response to a Blob and trigger a download
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "filled-badge.pdf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+
+    console.log("PDF downloaded successfully");
+  } catch (error) {
+    console.error("Failed to download PDF:", error);
+    alert("Failed to download PDF. Please try again.");
+  }
+});
+

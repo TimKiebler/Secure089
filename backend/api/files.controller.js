@@ -1,5 +1,6 @@
 import FilesDAO from '../dao/filesDAO.js';
 import { fetchUserAndFillPDF } from "../contractAutoFill/fillPersonalfragebogen.js"; 
+import { fetchUserAndFillContract } from "../contractAutoFill/fillArbeitsvertrag.js"; 
 import { fetchUserAndFillBadge } from "../contractAutoFill/fillBatch.js"; 
 
 
@@ -93,6 +94,32 @@ export default class FilesController {
     try {
       // Fetch user data and fill the PDF
       const pdfBytes = await fetchUserAndFillPDF(email);
+      
+      if (!pdfBytes || pdfBytes.length === 0) {
+        console.log("Generated PDF is empty")
+        return res.status(500).json({ error: "Generated PDF is empty" });
+      }
+      
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", 'attachment; filename="filled-contract.pdf"');
+      res.setHeader("Content-Length", pdfBytes.length); // Ensure correct file size
+      res.end(Buffer.from(pdfBytes)); // Correct way to send binary data
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      res.status(500).json({ error: "Failed to generate PDF" });
+    }
+  }
+
+  static async apiGetArbeitsvertrag(req, res) {
+    const { email, jobName } = req.query; 
+
+    if (!email || !jobName) {
+      return res.status(400).json({ error: "Email and jobName is required" });
+    }
+
+    try {
+      // Fetch user data and fill the PDF
+      const pdfBytes = await fetchUserAndFillContract(email, jobName);
       
       if (!pdfBytes || pdfBytes.length === 0) {
         console.log("Generated PDF is empty")
