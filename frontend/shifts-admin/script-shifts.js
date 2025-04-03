@@ -82,6 +82,8 @@ function renderShifts(jobData) {
     const container = document.getElementById("shift-container");
 
     jobData.forEach(job => {
+        const formattedDescription = job.description.replace(/\n/g, "<br>");
+
         // Create div for shift
         const shiftDiv = document.createElement("div");
         shiftDiv.classList.add("shift-card");
@@ -93,7 +95,7 @@ function renderShifts(jobData) {
               <img src="trashcan-icon.png" class="trashcan-icon" data-jobname="${job.jobName}">
             </div>
             <hr>
-            <p><strong>Beschreibung:</strong> ${job.description}</p>
+            <p><strong>Beschreibung:</strong> ${formattedDescription}</p>
         `;
 
         // Append to container
