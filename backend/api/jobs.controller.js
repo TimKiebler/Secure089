@@ -60,21 +60,54 @@ export default class JobsController {
   }
 
   static async apiApplyForJob(req, res) {
-    const { aplicantEmailAdresss, jobName } = req.body; 
-
-    if (!aplicantEmailAdresss || !jobName) {
-      return res.status(400).json({ error: "Missing required fields (aplicantEmailAdresss, jobName, aplicantName)" });
+    const { applicantEmailAddress, jobName } = req.body;
+  
+    if (!applicantEmailAddress || !jobName) {
+      return res.status(400).json({ error: "Missing required fields (applicantEmailAddress, jobName)" });
     }
 
     try {
-      const content =  aplicantEmailAdresss + 
-      " hat sich auf die folgende Position beworben: " + jobName;
+      const result = await JobsDAO.addApplicantToJob(jobName, applicantEmailAddress);
+
+      if (result.error) {
+        return res.status(404).json({ error: result.error });
+      }
+
+      if(result.message == "User already applied to this job." ) {
+        return res.status(405).json({ error: result.message });
+      }
+  
+      const content = `${applicantEmailAddress} hat sich auf die folgende Position beworben: ${jobName}`;
       
-      await sendEmail("tim.kiebler@gmail.com", "neue Bewerbung", content);
-      res.status(200).json({ message: "Email sent successfully" });
+      await sendEmail("tim.kiebler@gmail.com", "Neue Bewerbung", content);
+  
+      res.status(200).json({ message: "Application submitted successfully", emailStatus: "Email sent" });
     } catch (error) {
-      console.error("Error sending email:", error);
-      res.status(500).json({ error: "Failed to send email" });
+      console.error("Error during application process:", error);
+      res.status(500).json({ error: "Failed to process job application" });
     }
   }
+
+  static async apiGetApplicants(req, res) {
+    const jobName = req.query.jobName;
+  
+    if (!jobName) {
+      return res.status(400).json({ error: "Missing required query parameter: jobName" });
+    }
+  
+    try {
+      const result = await JobsDAO.getApplicantsByJobName(jobName);
+  
+      if (result.error) {
+        return res.status(404).json({ error: result.error });
+      }
+  
+      res.status(200).json(result);
+    } catch (error) {
+      console.error("Error fetching applicants:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  }
+  
+  
 }

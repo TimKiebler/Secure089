@@ -173,9 +173,23 @@ hr {
     color: #1b7a2f;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
 .apply-button {
-    height: 25px;
-    width: 100px;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: var(--color-logo);
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 @media (max-width: 700px) {

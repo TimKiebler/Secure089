@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Employees</title>
+    <link rel="stylesheet" href="styles-applicants.css">
+</head>
+<body>
+<!-- Topbar-->
+    <div class="topbar">
+        <img id="logo" src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">
+    </div>
+<!-- Sidebar-->
+     <div class="sidebar">
+        <div class="header-text">
+            <span class="name">CREW PORTAL</span>
+            <hr>
+        </div>
+        <ul class="sidebar-items">
+            <li id="home"><a href="../home/home.html">Home</a></li>
+            <li id="dokumente"><a href="../documents/documents.html">Dokumente</a></li>
+            <li id="stammdaten"><a href="../form/form.html">Stammdaten</a></li>
+            <li id="schichten"><a href="../shifts-admin/shifts-admin.html">Offene Stellen</a></li>
+            <li id="mitarbeiter" display="none" ><a href="../employees/employees.html">Mitarbeiter</a></li>
+            <li id="logout-button"><a href="../login/login.html">Ausloggen</a></li>   
+        </ul>
+    </div>
+<!-- Bottombar-->
+    <footer>
+        <div id="contact-info">
+            <img src="https://static.wixstatic.com/media/8d3027_c4628440e2034b239ccdf687a1f09ab9~mv2.png/v1/fill/w_454,h_126,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/white-Photoroom.png" alt="secure 089">
+            <div id="adress">Seeholzenstraße 2b<br>82166 Gräfelfing</div>
+            <div id="number">Tel.: +49 174 2357730<br>Sprechzeiten MO - SA : 9 - 19 Uhr</div>
+        </div>
+    </footer>
+<!-- main website-->
+    <div id="employees"></div>
+    <script src="../script-loged-in.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>

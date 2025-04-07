@@ -29,7 +29,7 @@ function handleApplyButtonClick(button) {
 }
 
 async function applyForJob(jobName) {
-  const aplicantEmailAdresss = localStorage.getItem("email");
+  const applicantEmailAddress = localStorage.getItem("email");
 
   try {
     const response = await fetch("http://localhost:8000/api/v1/users/apply", {
@@ -37,10 +37,11 @@ async function applyForJob(jobName) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ aplicantEmailAdresss, jobName }),
+      body: JSON.stringify({ applicantEmailAddress, jobName }),
     });
 
     if (!response.ok) {
+      alert(`Fehler: Sie haben sich bereits auf diese Stelle beworben`);
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 

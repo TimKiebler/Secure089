@@ -96,7 +96,9 @@ function renderShifts(jobData) {
             </div>
             <hr>
             <p><strong>Beschreibung:</strong> ${formattedDescription}</p>
-            
+            <div class="button-container">
+              <a href="../shift-applicants/applicants.html?jobName=${job.jobName}" class="button-style">Bewerber anzeigen</a>
+            </div>
         `;
 
         // Append to container

@@ -12,6 +12,7 @@ router.route("/me").get(UsersCtrl.apiGetUserDataOfCurrentUser);
 router.route("/").get(UsersCtrl.apiGetUsers)
 
 router.route("/apply").post(JobsCtrl.apiApplyForJob);
+router.route("/getApplicants").get(JobsCtrl.apiGetApplicants);
 
 router.route("/jobs/add").post(JobsCtrl.apiAddJob)
 router.route("/jobs/delete").delete(JobsCtrl.apiDeleteJob)

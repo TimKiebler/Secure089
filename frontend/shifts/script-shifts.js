@@ -47,7 +47,10 @@ function renderShifts(jobData) {
             <h2>${job.jobName}</h2>
             <hr>
             <p><strong>Beschreibung:</strong> ${job.description}</p>
-            <button class="apply-button">Bewerben</button>
+            
+            <div class="button-container">
+              <button class="apply-button">Bewerben</button>
+            </div>
         `;
 
         // Append to container
