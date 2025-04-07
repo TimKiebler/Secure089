@@ -96,6 +96,7 @@ function renderShifts(jobData) {
             </div>
             <hr>
             <p><strong>Beschreibung:</strong> ${formattedDescription}</p>
+            
         `;
 
         // Append to container

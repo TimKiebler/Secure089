@@ -4,7 +4,7 @@ import fs from "fs";
 import { getUserData } from "./fetchUserData.js";
 
 // Constants
-const TEMPLATE_PATH = "/Users/timkiebler/HTML/Secure089/Secure089/backend/contractAutoFill/BadgeFront.pdf";
+const TEMPLATE_PATH = "/Users/timkiebler/HTML/Secure089/Secure089/backend/contractAutoFill/Badge.pdf";
 const OUTPUT_PATH = "backend/contractAutoFill/filled-badge.pdf";
 
 // Main function to fetch user data and fill the PDF

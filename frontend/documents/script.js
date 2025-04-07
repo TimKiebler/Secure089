@@ -6,7 +6,6 @@ const fileInputs = {
   foto: document.getElementById("foto"),
   lebenslauf: document.getElementById("lebenslauf"),
   "34a": document.getElementById("34a"),
-  sachkundepruefung: document.getElementById("sachkundeprüfung"),
 };
 
 const submitButton = document.getElementById("submit-button");
