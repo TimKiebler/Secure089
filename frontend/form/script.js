@@ -1,4 +1,5 @@
-const apiBaseUrl = "https://secure089.onrender.com";
+var apiBaseUrl = "https://secure089.onrender.com";
+
 
 document.addEventListener("DOMContentLoaded", function () {
 // Show further information if applicant has further jobs

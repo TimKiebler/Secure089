@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-        const apiBaseUrl = "https://secure089.onrender.com";
+        var apiBaseUrl = "https://secure089.onrender.com";
+
 
         try {
             const response = await fetch(`${apiBaseUrl}/api/v1/users/login`, { 

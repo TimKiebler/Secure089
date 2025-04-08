@@ -1,4 +1,5 @@
-const apiBaseUrl = "https://secure089.onrender.com";
+var apiBaseUrl = "https://secure089.onrender.com";
+
 
 document.getElementById("logout-button").addEventListener("click", () => {
     localStorage.removeItem("token"); // Clear the token
@@ -76,6 +77,6 @@ function checkIfAdmin(userData) {
     console.error("No user data provided.");
     return false; // Return false if no user data is provided
   }
-  console.log("isAdmin:", userData.isAdmin); // Use console.log instead of console.error for debugging
+  //console.log("isAdmin:", userData.isAdmin);
   return userData.isAdmin; // Return the isAdmin value
 }

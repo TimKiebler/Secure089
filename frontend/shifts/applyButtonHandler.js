@@ -1,4 +1,5 @@
-const apiBaseUrl = "https://secure089.onrender.com";
+var apiBaseUrl = "https://secure089.onrender.com";
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     const registrationComplete = checkIfUserHasCompletedRegistration(await fetchUserData());
