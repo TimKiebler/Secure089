@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const jobData = await fetchJobData();
     if (jobData) {
@@ -24,7 +26,7 @@ async function addNewJob() {
 
   try {
     // Send the data to the backend
-    const response = await fetch("http://localhost:8000/api/v1/users/jobs/add", {
+    const response = await fetch(`${apiBaseUrl}/api/v1/users/jobs/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +62,7 @@ async function addNewJob() {
 async function fetchJobData() {
   
     try {
-      const response = await fetch("http://localhost:8000/api/v1/users/jobs/getAll", {
+      const response = await fetch(`${apiBaseUrl}/api/v1/users/jobs/getAll`, {
         method: "GET"
       });
   
@@ -116,7 +118,7 @@ function renderShifts(jobData) {
 
 async function handleTrashcanClick(jobName) {
   try {
-    const response = await fetch("http://localhost:8000/api/v1/users/jobs/delete", {
+    const response = await fetch(`${apiBaseUrl}/api/v1/users/jobs/delete`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"

@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.addEventListener("DOMContentLoaded", function () {
 // Show further information if applicant has further jobs
     const yesOption = document.getElementById("Hauptjob-yes");
@@ -29,7 +31,7 @@ async function fetchUserData() {
     }
   
     try {
-      const response = await fetch("http://localhost:8000/api/v1/users/me", {
+      const response = await fetch(`${apiBaseUrl}/api/v1/users/me`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`, // Include the token in the header

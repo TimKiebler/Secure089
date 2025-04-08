@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.getElementById("logout-button").addEventListener("click", () => {
     localStorage.removeItem("token"); // Clear the token
     localStorage.removeItem("email"); // Clear the email
@@ -49,7 +51,7 @@ async function fetchUserData() {
   }
 
   try {
-    const response = await fetch("http://localhost:8000/api/v1/users/me", {
+    const response = await fetch(`${apiBaseUrl}/api/v1/users/me`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`, // Include the token in the header

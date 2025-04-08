@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const registrationComplete = checkIfUserHasCompletedRegistration(await fetchUserData());
 
@@ -32,7 +34,7 @@ async function applyForJob(jobName) {
   const applicantEmailAddress = localStorage.getItem("email");
 
   try {
-    const response = await fetch("http://localhost:8000/api/v1/users/apply", {
+    const response = await fetch(`${apiBaseUrl}/api/v1/users/apply`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +63,7 @@ async function fetchUserData() {
     }
   
     try {
-      const response = await fetch("http://localhost:8000/api/v1/users/me", {
+      const response = await fetch(`${apiBaseUrl}/api/v1/users/me`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`, // Include the token in the header

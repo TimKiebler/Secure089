@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const jobName = urlParams.get("jobName");
@@ -15,7 +17,7 @@ async function fetchApplicants(jobName) {
   }
 
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/users/getApplicants?jobName=${encodeURIComponent(jobName)}`, {
+    const response = await fetch(`${apiBaseUrl}/api/v1/users/getApplicants?jobName=${encodeURIComponent(jobName)}`, {
       method: "GET"
     });
 
@@ -34,7 +36,7 @@ async function fetchApplicants(jobName) {
 async function fetchApplicantData(applicantEmailAddress) {
   try {
     // Pass the email as a query parameter
-    const url = `http://localhost:8000/api/v1/users/getUser?email=${encodeURIComponent(applicantEmailAddress)}`;
+    const url = `${apiBaseUrl}/api/v1/users/getUser?email=${encodeURIComponent(applicantEmailAddress)}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {

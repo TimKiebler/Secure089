@@ -1,3 +1,4 @@
+const apiBaseUrl = "https://secure089.onrender.com";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -46,7 +47,7 @@ async function uploadFileToField(field, file, userEmail) {
   formData.append("email", userEmail);
 
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/files/upload/${field}`, {
+    const response = await fetch(`${apiBaseUrl}/api/v1/files/upload/${field}`, {
       method: "POST",
       body: formData,
     });
@@ -80,7 +81,8 @@ async function displayUploadedFilenames() {
 
 async function getUploadedFilenames(userEmail) {
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/files/metadata/${userEmail}`);
+
+    const response = await fetch(`${apiBaseUrl}/api/v1/files/metadata/${userEmail}`);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     return await response.json();
   } catch (error) {
@@ -91,7 +93,7 @@ async function getUploadedFilenames(userEmail) {
 
 async function downloadFile(field, userEmail) {
   try {
-    const response = await fetch(`http://localhost:8000/api/v1/files/${field}?email=${userEmail}`);
+    const response = await fetch(`${apiBaseUrl}/api/v1/files/${field}?email=${userEmail}`);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
     const contentDisposition = response.headers.get("Content-Disposition");
@@ -133,7 +135,7 @@ personalfragebogenButton.addEventListener("click", async () => {
 
   try {
     // Call the backend API to generate the PDF
-    const response = await fetch(`http://localhost:8000/api/v1/files/download/personalfragebogen/?email=${userEmail}`);
+    const response = await fetch(`${apiBaseUrl}/api/v1/files/download/personalfragebogen/?email=${userEmail}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -164,7 +166,7 @@ badgeButton.addEventListener("click", async () => {
 
   try {
     // Call the backend API to generate the PDF
-    const response = await fetch(`http://localhost:8000/api/v1/files/download/dienstausweis/?email=${userEmail}`);
+    const response = await fetch(`${apiBaseUrl}/api/v1/files/download/dienstausweis/?email=${userEmail}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -196,7 +198,7 @@ contractButton.addEventListener("click", async () => {
 
   try {
     // Call the backend API to generate the PDF
-    const response = await fetch(`http://localhost:8000/api/v1/files/download/arbeitsvertrag/?email=${userEmail}&jobName=${JobName}`);
+    const response = await fetch(`${apiBaseUrl}/api/v1/files/download/arbeitsvertrag/?email=${userEmail}&jobName=${JobName}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);

@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
 
-        const port = 8000
+        const apiBaseUrl = "https://secure089.onrender.com";
 
         try {
-            const response = await fetch(`http://localhost:${port}/api/v1/users/login`, { 
+            const response = await fetch(`${apiBaseUrl}/api/v1/users/login`, { 
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

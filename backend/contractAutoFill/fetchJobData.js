@@ -1,7 +1,9 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 export async function getJobData(jobName) {
     try {
       // Pass the email as a query parameter
-      const url = `http://localhost:8000/api/v1/users/jobs/getAll`;
+      const url = `${apiBaseUrl}/api/v1/users/jobs/getAll`;
       const response = await fetch(url, {
         method: "GET",
         headers: {

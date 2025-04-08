@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.addEventListener("DOMContentLoaded", async () => {
     const employeeList = await fetchEmployees();
     if (employeeList) {
@@ -14,7 +16,7 @@ const jobData = await fetchJobData();
 async function fetchEmployees() {
   
     try {
-      const response = await fetch("http://localhost:8000/api/v1/users/", {
+      const response = await fetch(`${apiBaseUrl}/api/v1/users/`, {
         method: "GET"
       });
   

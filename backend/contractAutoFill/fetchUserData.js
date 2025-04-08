@@ -1,7 +1,9 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 export async function getUserData(email) {
   try {
     // Pass the email as a query parameter
-    const url = `http://localhost:8000/api/v1/users/getUser?email=${encodeURIComponent(email)}`;
+    const url = `${apiBaseUrl}/api/v1/users/getUser?email=${encodeURIComponent(email)}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {

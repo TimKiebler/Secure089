@@ -1,3 +1,5 @@
+const apiBaseUrl = "https://secure089.onrender.com";
+
 document.addEventListener("DOMContentLoaded", () => {
   const submitButton = document.getElementById("submit-button");
 
@@ -83,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Send the data to the backend
     try {
-      const response = await fetch("http://localhost:8000/api/v1/users/register/complete", {
+      const response = await fetch(`${apiBaseUrl}/api/v1/users/register/complete`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
