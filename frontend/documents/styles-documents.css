@@ -18,124 +18,16 @@
     --footer-height: 100px;
 }
 
-body {
-    background-color: var(--color-body);
-    display: grid;
-    grid-template-rows: var(--topbar-height) auto var(--footer-height);
-    grid-template-columns: 200px calc(100vw - 200px);
-    height: 100vh;
-}
-
-/* topbar */
-.topbar {
-    grid-row: 1;
-    grid-column: 2 / span 2;
-    background-color: var(--color-topbar);
-    display: flex;
-    align-items: center;
-}
-#logo {
-    height: 70px;
-}
-
-
-/* sidebar */
-.sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100vh;
-    background-color: var(--color-sidebar);
-    color: var(--color-sidebar-content);
-    display: flex;
-    padding: 30px 0;
-    flex-direction: column;
-    align-items: center;   
-}
-.sidebar > .header-text {
-    font-family: var( --sidebar-font);
-    font-size: 23px;
-    
-}
-.header-text > hr {
-    margin-top: 20px;
-    border-color: var(--color-sidebar-content);
-}
-.sidebar > ul {
-    display: flex;
-    flex-direction: column;  
-    justify-content: flex-start;  
-    height: 100%; 
-    width: 100%;
-}
-.sidebar > ul > li {width: 90%;
-    color: var(--color-sidebar-content);
-    list-style: none;
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    cursor: pointer;
-}
-a {
-    text-decoration: none;
-    color: var(--color-sidebar-content);
-    font-family: var( --sidebar-font);
-
-}
-#logout-button {
-    margin-top: auto;
-}
+/* makes the current sidebar item blue */
 #dokumente {
     background-color: var(--color-logo);
 }
-
-
-/* footer */
-footer {
-    grid-row: 3;
-    grid-column: 2;
-    background-color: var(--color-footer);
-}
-#contact-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px; 
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 20px;
-    
-}
-#contact-info img {
-    height: 60px;
-}
-#contact-info div {
-    padding: 0 15px; 
-    position: relative; 
-}
-    /* Vertikale Trennstriche */
-#contact-info div::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 80%; 
-    width: 2px;
-    background-color: black;
-}
-#contact-info div:first-child::before {
-    display: none;
-}
-
 
 /* home side */
 
 #main-website {
     grid-row: 2;
     grid-column: 2;
-    /*min-height: calc(100vh - var(--topbar-height) - var(--footer-height));*/
     font-family:Arial, Helvetica, sans-serif;
     padding: 20px 50px;
 }
