@@ -24,8 +24,7 @@
 
 
 /* main webside */
-
-#main-website {
+.main-website {
     grid-row: 2;
     grid-column: 2;
     font-family:Arial, Helvetica, sans-serif;
