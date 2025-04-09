@@ -1,0 +1,14 @@
+@media (max-width: 700px) {
+    .sidebar {
+        display: none;
+    }
+    .topbar {
+        grid-column: 1 / -1; 
+    }
+    .webside {
+        grid-column: 1 / -1; 
+    }
+    footer{
+        grid-column: 1 / -1; 
+    }
+}
