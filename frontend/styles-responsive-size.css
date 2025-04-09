@@ -1,5 +1,6 @@
 
 @media (max-width: 700px) {
+    /* hide the sidebar element and fix layout for remaning elements */
     .sidebar {
         display: none;
     }
@@ -9,4 +10,9 @@
     .topbar, .main-website, footer {
         grid-column: 1; 
     } 
+
+    /* integrade sidebar button in the topbar  */
+    #hamburger-menue {
+        display: block;
+    }
 }

@@ -156,16 +156,3 @@ input[type="radio"] {
     border-radius: 5px;
     cursor: pointer;
 }
-
-
-@media (max-width: 700px) {
-    .sidebar {
-        display: none;
-    }
-    .topbar {
-        grid-column: 1 / -1; 
-    }
-    #shift-container {
-        grid-column: 1 / -1; 
-    }
-}

@@ -123,18 +123,3 @@ input, select {
     font-size: 1rem;
 }
 
-@media (max-width: 700px) {
-    .sidebar {
-        display: none;
-    }
-    .topbar {
-        grid-column: 1 / -1; 
-    }
-    footer {
-        grid-column: 1 / -1; 
-    }
-    .stammdaten {
-        grid-column: 1 / -1; 
-    }
-}
-
